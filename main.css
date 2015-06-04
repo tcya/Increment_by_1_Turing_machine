@@ -11,7 +11,6 @@ body {
      0   1   1   0   1   1   1  0   */
 
 input { display: none; position: absolute; top: -1000px; left: -1000px; }
-
 body > label {
     display: block;
     float: left;
@@ -20,40 +19,41 @@ body > label {
     padding: 5px 12px;
 }
 
-body > label:nth-of-type(-n+3) { border-top: 1px solid #ddd; }
-body > label:nth-of-type(3n+2) { border-left: 1px solid #ddd; clear: left; }
-body > input:nth-of-type(-n+3) { display: none; }
+body > label:nth-of-type(-n+5) { border-top: 1px solid #ddd; }
+body > label:nth-of-type(5n+2) { border-left: 1px solid #ddd; clear: left; }
+/*body > input:nth-of-type(5n+1) { display: none; }*/
+/*body > label:nth-of-type(5n+1) { color: yellow; }*/
 
 body > label::before { content: "0"; }
 
 body > input:checked + label::before { content: "1"; }
-body > input:checked + label { background: #afa !important; }
+body > input:checked + label { background: green !important; }
 
 div { clear: both; }
 
 
 
-input:not(:checked) +*+ input +*+ input
+/*input:not(:checked) +*+ input +*+ input
         +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ input {
     display: block;
 }
 input:not(:checked) +*+ input +*+ input
         +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ label {
-    background: #fa0;
-}
+    background: red;
+}*/
 
-input:checked +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ input {
+input:checked +*+input {
     display: block;
 }
-input:checked +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ label {
-    background: #fa0;
+input:checked +*+*+label {
+    background: red;
 }
 
-*+*+ input:checked +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ input {
+/**+*+ input:checked +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ input {
     display: block;
 }
 *+*+ input:checked +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ label {
-    background: #fa0;
+    background: red;
 }
 
 input:checked +*+ input:checked +*+ input:checked
@@ -62,7 +62,7 @@ input:checked +*+ input:checked +*+ input:checked
 }
 input:checked +*+ input:checked +*+ input:checked
         +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ label {
-    background: #fff;
+    background: white;
 }
 
 input:not(:checked) +*+ input:not(:checked) +*+ input:not(:checked) +
@@ -71,11 +71,11 @@ input:not(:checked) +*+ input:not(:checked) +*+ input:not(:checked) +
 }
 input:not(:checked) +*+ input:not(:checked) +*+ input:not(:checked) +
         *+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ label {
-    background: #fff;
-}
+    background: white;
+}*/
 
 input:focus + label {
-    background: #f0f !important;
+    background: blue !important;
 }
 
 .hidden { display: none !important; }
@@ -92,7 +92,7 @@ input:focus + label {
 #messages{
     list-style-type: none;
     background: #e60;
-    color: #fff;
+    color: white;
     padding: 13px 2.5em 13px 13px;
     font-weight: bold;
     font-family: 'Lucida Grande', 'Lucida Sans', arial, 'Helvetica';
