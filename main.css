@@ -31,6 +31,22 @@ body > input:checked + label { background: green !important; }
 
 div { clear: both; }
 
+input:nth-of-type(2):not(:checked) ~ input.out {
+    display: none;
+}
+label:nth-of-type(2)~label.out{
+    background: red;
+}
+/*input.inp:not(:checked) ~ input.out {
+    display: block;
+}*/
+/*input.inp:not(:checked) +*+*+label {
+    background: red;
+}*/
+
+input.inp:checked +*+input.carrying {
+    display: none;
+}
 
 
 /*input:not(:checked) +*+ input +*+ input
@@ -42,12 +58,8 @@ input:not(:checked) +*+ input +*+ input
     background: red;
 }*/
 
-input:checked +*+input {
-    display: block;
-}
-input:checked +*+*+label {
-    background: red;
-}
+
+
 
 /**+*+ input:checked +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ input {
     display: block;
