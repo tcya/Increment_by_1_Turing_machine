@@ -1,0 +1,124 @@
+body {
+    -webkit-animation: bugfix infinite 1s;
+    font-family: "Courier New";
+    font-size: 28px;
+    padding: 3em;
+    margin: 3em;
+}
+@-webkit-keyframes bugfix { from { padding: 0; } to { padding: 0; } }
+
+/*  111 110 101 100 011 010 001 000
+     0   1   1   0   1   1   1  0   */
+
+input { display: none; position: absolute; top: -1000px; left: -1000px; }
+
+body > label {
+    display: block;
+    float: left;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 5px 12px;
+}
+
+body > label:nth-of-type(-n+3) { border-top: 1px solid #ddd; }
+body > label:nth-of-type(3n+2) { border-left: 1px solid #ddd; clear: left; }
+body > input:nth-of-type(-n+3) { display: none; }
+
+body > label::before { content: "0"; }
+
+body > input:checked + label::before { content: "1"; }
+body > input:checked + label { background: #afa !important; }
+
+div { clear: both; }
+
+
+
+input:not(:checked) +*+ input +*+ input
+        +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ input {
+    display: block;
+}
+input:not(:checked) +*+ input +*+ input
+        +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ label {
+    background: #fa0;
+}
+
+input:checked +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ input {
+    display: block;
+}
+input:checked +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ label {
+    background: #fa0;
+}
+
+*+*+ input:checked +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ input {
+    display: block;
+}
+*+*+ input:checked +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ label {
+    background: #fa0;
+}
+
+input:checked +*+ input:checked +*+ input:checked
+        +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ input {
+    display: none;
+}
+input:checked +*+ input:checked +*+ input:checked
+        +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ label {
+    background: #fff;
+}
+
+input:not(:checked) +*+ input:not(:checked) +*+ input:not(:checked) +
+        *+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ input {
+    display: none;
+}
+input:not(:checked) +*+ input:not(:checked) +*+ input:not(:checked) +
+        *+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ label {
+    background: #fff;
+}
+
+input:focus + label {
+    background: #f0f !important;
+}
+
+.hidden { display: none !important; }
+.hidden + label { display: none !important; }
+
+
+#infobox {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 350px;
+}
+
+#messages{
+    list-style-type: none;
+    background: #e60;
+    color: #fff;
+    padding: 13px 2.5em 13px 13px;
+    font-weight: bold;
+    font-family: 'Lucida Grande', 'Lucida Sans', arial, 'Helvetica';
+}
+
+#messages li {
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+#ready:not(:checked) ~ #messages li:first-child {
+    display: inline;
+}
+#ready:checked ~ #messages li:first-child{
+    display: none;
+}
+
+#ready:checked ~ #messages li:nth-child(2){
+    display: inline;
+}
+input:focus:not(:checked) ~ div #messages li:nth-child(2) {
+    display: none !important;
+}
+
+input:focus:not(:checked) ~ div #messages li:last-child {
+    display: inline;
+}
+}
