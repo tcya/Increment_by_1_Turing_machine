@@ -9,7 +9,7 @@ body {
 
 /*  111 110 101 100 011 010 001 000
      0   1   1   0   1   1   1  0   */
-
+p.message {{ z-index: 99; position: fixed; left: 60%; top: 30%; width: 20%; font-size: 30px; line-height: 100px; background: #fff; border: 2px solid #000; }}
 input { display: none; position: absolute; top: -1000px; left: -1000px; }
 body > label {
     display: block;
@@ -25,66 +25,55 @@ body > label:nth-of-type(5n+2) { border-left: 1px solid #ddd; clear: left; }
 /*body > label:nth-of-type(5n+1) { color: yellow; }*/
 
 body > label::before { content: "0"; }
-
+body > label.placeholder::before { content: "+"; }
 body > input:checked + label::before { content: "1"; }
 body > input:checked + label { background: green !important; }
 
 div { clear: both; }
 
-input:nth-of-type(2):not(:checked) ~ input.out {
-    display: none;
-}
-label:nth-of-type(2)~label.out{
-    background: red;
-}
-/*input.inp:not(:checked) ~ input.out {
-    display: block;
-}*/
-/*input.inp:not(:checked) +*+*+label {
-    background: red;
-}*/
-
-input.inp:checked +*+input.carrying {
-    display: none;
-}
-
-
-/*input:not(:checked) +*+ input +*+ input
-        +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ input {
+/*Handle the lowest digit*/
+input:nth-of-type(2):not(:checked)+*+input.out {
     display: block;
 }
-input:not(:checked) +*+ input +*+ input
-        +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ label {
-    background: red;
-}*/
 
-
-
-
-/**+*+ input:checked +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ input {
+input:nth-of-type(2):checked+*+*+*+input.carrying {
     display: block;
 }
-*+*+ input:checked +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ label {
-    background: red;
+
+input:nth-of-type(2)+*+*+*+*+*+input.processed {
+    display: block;
 }
 
-input:checked +*+ input:checked +*+ input:checked
-        +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ input {
-    display: none;
-}
-input:checked +*+ input:checked +*+ input:checked
-        +*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ label {
-    background: white;
+/*Handle other digits*/
+input.processed:checked +*+*+*+*+*+*+*+*+*+ input.processed{
+    display: block;
 }
 
-input:not(:checked) +*+ input:not(:checked) +*+ input:not(:checked) +
-        *+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ input {
-    display: none;
+input.carrying:checked +*+ input.processed:checked +*+*+*+ input.inp:not(:checked) +*+ input.out{
+    display: block;
 }
-input:not(:checked) +*+ input:not(:checked) +*+ input:not(:checked) +
-        *+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+ label {
-    background: white;
-}*/
+
+input.carrying:checked +*+ input.processed:checked +*+*+*+ input.inp:checked +*+*+*+ input.carrying{
+    display: block;
+}
+
+input.carrying:not(:checked) +*+ input.processed:checked +*+*+*+ input.inp:checked +*+ input.out{
+    display: block;
+}
+
+/*Handle the carrying of the highest digit*/
+input.carrying:checked +*+ input.processed:checked +*+*+*+*+ input.out{
+    display: block;
+}
+
+input.carrying:checked +*+ input.processed:checked +*+*+*+*+ input.out::before { content: "+"; }
+
+input.processed:checked +*+*+*+*+ input.out +*+*+ input.processed{
+    display: block;
+}
+
+/*Print success message*/
+input:nth-last-of-type(1):checked ~ p.message::after{ content: 'Done!!'; }
 
 input:focus + label {
     background: blue !important;
