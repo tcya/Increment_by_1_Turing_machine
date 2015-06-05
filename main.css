@@ -35,7 +35,7 @@ label::before { content: "0"; }
 label.processed::before { content: "no"; }
 label.carrying::before { content: "no"; }
 input:checked + label::before { content: "1"; }
-input:checked + label { background: green !important; }
+input:checked + label { background: aquamarine !important; }
 input.carrying:checked + label::before { content: "yes"; }
 input.processed:checked + label::before { content: "yes"; }
 label.placeholder::before { content: "*"; }
@@ -87,7 +87,7 @@ input.processed:checked +*+*+*+*+ input.out +*+*+ input.processed{
 input:nth-last-of-type(1):checked ~ p.message::after{ content: 'Done!!'; }
 
 input:focus + label {
-    background: blue !important;
+    background: cornflowerblue !important;
 }
 
 .hidden { display: none !important; }
