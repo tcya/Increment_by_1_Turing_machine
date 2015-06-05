@@ -9,30 +9,30 @@ body {
 
 /*  111 110 101 100 011 010 001 000
      0   1   1   0   1   1   1  0   */
-p.message { z-index: 99; position: fixed; left: 40%; top: 30%; width: 20%; font-size: 40px; line-height: 100px; color: red;  }
+p.message { z-index: 99; position: fixed; left: 60%; top: 50%; width: 20%; font-size: 40px; line-height: 100px; color: red;    direction: ltr}
 input { display: none; position: absolute; top: -1000px; left: -1000px; }
-body > label {
+label {
     display: block;
-    float: left;
+    /*float: left;*/
     border-right: 1px solid #ddd;
     border-left: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
     padding: 5px 12px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-bottom: 50px;
 }
 
-body > label:nth-of-type(-n+5) { border-top: 1px solid #ddd; }
-body > label:nth-of-type(5n+2) { border-left: 1px solid #ddd; clear: left; }
-/*body > input:nth-of-type(5n+1) { display: none; }*/
-/*body > label:nth-of-type(5n+1) { color: yellow; }*/
 
-body > label::before { content: "0"; }
-body > label.placeholder::before { content: "+"; }
-body > input:checked + label::before { content: "1"; }
-body > input:checked + label { background: green !important; }
+label:nth-of-type(5n+2) { clear: left; }
+/*input:nth-of-type(5n+1) { display: none; }*/
+/*label:nth-of-type(5n+1) { color: yellow; }*/
 
-div { clear: both; }
+label::before { content: "0"; }
+label.placeholder::before { content: "*"; }
+input:checked + label::before { content: "1"; }
+input:checked + label { background: green !important; }
+
+/*div { clear: both; }*/
 
 /*Handle the lowest digit*/
 input:nth-of-type(2):not(:checked)+*+input.out {
