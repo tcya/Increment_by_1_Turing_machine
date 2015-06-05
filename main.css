@@ -32,8 +32,12 @@ label.header {
 /*label:nth-of-type(5n+2) { clear: left; }*/
 
 label::before { content: "0"; }
+label.processed::before { content: "no"; }
+label.carrying::before { content: "no"; }
 input:checked + label::before { content: "1"; }
 input:checked + label { background: green !important; }
+input.carrying:checked + label::before { content: "yes"; }
+input.processed:checked + label::before { content: "yes"; }
 label.placeholder::before { content: "*"; }
 label.header::before{ content: ""}
 
