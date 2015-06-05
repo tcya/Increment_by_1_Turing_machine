@@ -1,11 +1,11 @@
 #container {
-    width: 50%;
+    width: 80%;
     direction: rtl;
-    column-count: 4;
+    column-count: 7;
     column-gap: 0px;
-    -moz-column-count: 4;
+    -moz-column-count: 7;
     -moz-column-gap: 0px;
-    -webkit-column-count: 4;
+    -webkit-column-count: 7;
     -webkit-column-gap: 0px;
 }
 
