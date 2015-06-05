@@ -28,7 +28,13 @@ label.header {
     font-size: 20px;
     margin-bottom: 60px;
 }
-
+#infobox {
+    border: none;
+    direction: ltr;
+}
+#start_message {
+    border: none;
+}
 /*label:nth-of-type(5n+2) { clear: left; }*/
 
 label::before { content: "0"; }
@@ -40,6 +46,7 @@ input.carrying:checked + label::before { content: "yes"; }
 input.processed:checked + label::before { content: "yes"; }
 label.placeholder::before { content: "*"; }
 label.header::before{ content: ""}
+#start_message::before { content: "";}
 
 /*div { clear: both; }*/
 
@@ -98,7 +105,7 @@ p.message + label { display: none }
     position: absolute;
     top: 0;
     right: 0;
-    width: 350px;
+    width: 20%;
 }
 
 #messages{
@@ -132,5 +139,4 @@ input:focus:not(:checked) ~ div #messages li:nth-child(2) {
 
 input:focus:not(:checked) ~ div #messages li:last-child {
     display: inline;
-}
 }
