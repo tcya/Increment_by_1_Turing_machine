@@ -5,8 +5,11 @@
     <style>
     *{background-color: transparent;}
     p{text-indent: 2em; }
-    /*code{text-indent: 2em; }*/
-    pre, code{background-color: #f5f5f5;}
+    code{text-indent: 2em; }
+    pre{background-color: #f5f5f5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    }
     div.html{text-indent: 2em;
     background-color: #f5f5f5;}
     #checkboxes{margin-left: 2em; }
@@ -438,7 +441,7 @@
 
 <h2>加一器</h2>
 <p>看到这么酷酷的思路我当然也按捺不住了，所以我决定站在前人的肩膀上，写个比他们都简单的程序( ͡° ͜ʖ ͡°)。恩就决定是你了，单带图灵机的加一程序。<a href="https://github.com/tcya/Increment_by_1_Turing_machine">GitHub地址</a>，<a href="https://rawgit.com/tcya/Increment_by_1_Turing_machine/master/incremented_by_one.html">项目页面</a>(得在电脑上打开，建议Chrome)。效果是这样滴，</p>
-<img src="img/add_one.png" alt="increment by one function" width="1000px" style="margin-left: 2em">
+<img src="img/add_one.png" alt="increment by one function" width="900px" style="margin-left: 2em">
 <p>你在第一行表示好你想要的输入数字，右上角点开始后就tab，空格一直交替按，第二行就会给出第一行+1的数了。第三行表示是否需要进位，第四行表示这位是否处理完了。
 这个程序的小创新在于显式地使用了状态/分隔符，也就是第三行和第四行。引入它们是为了克服CSS的全局性。比如你要把个位加一，于是在CSS里面定义了只要第一格是0第二格就写成1，而除了个位之外其他还保留原样。这显然不行，因为可能会需要进位，这看起来也不会有单带图灵机里一位一位处理的效果。而引入状态符后，通过给每行的格子不同的类名，我就可以这样写，</p>
 <!-- <img src="img/increment_one_code.png" alt="increment by one code" width="60%" style="margin-left: 2em"> -->
@@ -500,7 +503,7 @@
 <p>我们现在看个稍微复杂点的函数，单带图灵机那节里的f(x)=2^x函数。先重温下思想："我们知道，在二进制表示下，只要在原数后面添上一个0，就是原来的数乘以二。根据这个思想，我们每次在写一个0，同时原数减一，直到原数减为0，再在所写的0前面添加上一个1，就能得出所求函数的答案了。"</p>
 <p>用HTML/CSS该怎么写？</p>
 <p>我并没有真的写，但想了下下图这样应该能实现。</p>
-<img src="img/tail_recursion_in_STM.png" alt="tail recursion in single tape Turing machine" width="1200px">
+<img src="img/tail_recursion_in_STM.png" alt="tail recursion in single tape Turing machine" width="1000px">
 <p>每个迭代函数需要记录两个量，一个不断减一的输入和一个依次加零的输出。当某步的输入区为零时就选中返回标记，当返回标记被选中就会去写结果区从而停机。</p>
 <p>而这不就是尾递归吗？</p>
 <h3>普通递归与尾递归</h3>
@@ -546,7 +549,7 @@
     print result
 </pre>
 <p>对应到复选框构成的内存上你大概需要这样操作：</p>
-<img src="img/loop_in_STM.png" alt="loop in single tape Turing machine" width="1300px" style="margin-left: 2em;">
+<img src="img/loop_in_STM.png" alt="loop in single tape Turing machine" width="1100px" style="margin-left: 2em;">
 <p>你可以看出这和尾递归的流程极其相似，每个中间过程都保存一个中间结果，这个结果在最后一步就会是我们要的答案，不同之处只在于中间输入，在尾递归那是从输入依次减一直到零，在循环这则是 i 从零一路加一直到初始输入值。这显然不是什么本质差别，因为这里的循环重要的只是次数，我只要把</p>
 <pre>
     for i in range(n)
