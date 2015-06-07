@@ -438,7 +438,7 @@
 
 <h2>加一器</h2>
 <p>看到这么酷酷的思路我当然也按捺不住了，所以我决定站在前人的肩膀上，写个比他们都简单的程序( ͡° ͜ʖ ͡°)。恩就决定是你了，单带图灵机的加一程序。<a href="https://github.com/tcya/Increment_by_1_Turing_machine">GitHub地址</a>，<a href="https://rawgit.com/tcya/Increment_by_1_Turing_machine/master/incremented_by_one.html">项目页面</a>(得在电脑上打开，建议Chrome)。效果是这样滴，</p>
-<img src="img/increment_one.png" alt="increment by one function" width="1000px" style="margin-left: 2em">
+<img src="img/add_one.png" alt="increment by one function" width="1000px" style="margin-left: 2em">
 <p>你在第一行表示好你想要的输入数字，右上角点开始后就tab，空格一直交替按，第二行就会给出第一行+1的数了。第三行表示是否需要进位，第四行表示这位是否处理完了。
 这个程序的小创新在于显式地使用了状态/分隔符，也就是第三行和第四行。引入它们是为了克服CSS的全局性。比如你要把个位加一，于是在CSS里面定义了只要第一格是0第二格就写成1，而除了个位之外其他还保留原样。这显然不行，因为可能会需要进位，这看起来也不会有单带图灵机里一位一位处理的效果。而引入状态符后，通过给每行的格子不同的类名，我就可以这样写，</p>
 <!-- <img src="img/increment_one_code.png" alt="increment by one code" width="60%" style="margin-left: 2em"> -->
