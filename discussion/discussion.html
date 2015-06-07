@@ -549,7 +549,7 @@
     print result
 </pre>
 <p>对应到复选框构成的内存上你大概需要这样操作：</p>
-<img src="img/loop_in_STM.png" alt="loop in single tape Turing machine" width="1000px" style="margin-left: 2em;">
+<img src="img/loop_in_STM.png" alt="loop in single tape Turing machine" width="1000px">
 <p>你可以看出这和尾递归的流程极其相似，每个中间过程都保存一个中间结果，这个结果在最后一步就会是我们要的答案，不同之处只在于中间输入，在尾递归那是从输入依次减一直到零，在循环这则是 i 从零一路加一直到初始输入值。这显然不是什么本质差别，因为这里的循环重要的只是次数，我只要把</p>
 <pre>
     for i in range(n)
